@@ -1,0 +1,20 @@
+class SessionsController < ApplicationController
+  def new
+    # nothing to do here!
+  end
+
+  def create
+    
+    if !params[:name] || params[:name] == ""
+      redirect_to '/session/new'
+    else
+      session[:name] = params[:name]
+      redirect_to '/secrets/show'
+    end
+    
+  end
+
+  def destroy
+    session.delete :name
+  end 
+end
